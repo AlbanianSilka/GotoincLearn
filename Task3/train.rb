@@ -35,6 +35,7 @@ class Train
     @speed += 50 if @speed.positive?
   end
 
+  #Установка количества вагонов и отцепление одного с выводом нового количества
   def set_vagons
     puts 'Введите количество вагонов в вашем поезде'
     @vagon_number = gets.to_i

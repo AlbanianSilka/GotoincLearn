@@ -12,9 +12,10 @@ class Route
     puts "Ваша конечная станция - #{@last_station}"
   end
 
+  # Создание маршрута для поезда
   def create_stations
     @station_list = []
-    puts 'Вводите поочёдно ваши станции, а когда закончите, то напишите "stop"'
+    puts 'Вводите поочёдно ваши станции, а когда закончите, то напишите "stop" или "стоп"'
     while user_input = gets.chomp
       @station_list.push(user_input.to_s)
 
@@ -23,6 +24,8 @@ class Route
     @station_list[-1] = @last_station
   end
 
+  # Создание полного маршрута для поезда с записью первой станцией станции из Station и последней той, что ввели выше
+  # Ниже удаление или добавление станции в маршрут
   def full_route(num)
     puts @station_list.unshift(num)
     puts 'Если это полный маршрут - пропишите "0", если вам нужно добавить станцию - пропишите "add",

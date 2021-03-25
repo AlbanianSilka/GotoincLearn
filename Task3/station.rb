@@ -12,6 +12,7 @@ class Station
     @listed_trains = list_trains
   end
 
+  # Вывод всех поездов на главной станции
   def train_list(train_num)
     @list_trains = []
     @list_trains.append(train_num)
