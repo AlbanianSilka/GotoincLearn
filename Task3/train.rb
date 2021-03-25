@@ -60,7 +60,7 @@ class Train
     our_station = gets.chomp.to_i
     while current_station != our_station
       current_station += 1
-      puts "Поезд на станцию #{route[current_station - 1]}"
+      puts "Поезд прибыл на станцию #{route[current_station - 1]}"
     end
     puts 'Поезд покидает первую станцию'
     x = [station_name]
