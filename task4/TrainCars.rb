@@ -1,4 +1,8 @@
+load '../task5/company.rb'
+
 class PassCar
+
+  include Company
 
   attr_accessor :contain_passengers, :goods, :car_number
 
@@ -24,6 +28,8 @@ class PassCar
 end
 
 class CargoCar
+  include Company
+
   attr_accessor :contain_passengers, :goods, :goods_list, :car_number
 
   def initialize(car_number, contain_passengers = false , goods = true, goods_list = nil )
