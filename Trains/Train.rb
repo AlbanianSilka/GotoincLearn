@@ -1,6 +1,7 @@
-load 'TrainCars/CargoCar.rb'
-load 'TrainCars/PasCar.rb'
-load 'task5/company.rb'
+# load './TrainCars/CargoCar.rb'
+load '../TrainCars/CargoCar.rb'
+load '../TrainCars/PasCar.rb'
+load '../task5/company.rb'
 
 
 class Train
@@ -17,11 +18,10 @@ class Train
     @cars_list = []
   end
 
-  def train_info()
-    puts 'Введите номер вашего поезда'
-    @train_number = gets.to_i
-    puts "Номера вашего поезда - #{@train_number}"
-    @@train_list.push(@train_number)
+  def train_info(train_num)
+    @train_number = train_num
+    puts "Номера вашего поезда - #{train_num}"
+    @@train_list.push(train_num)
   end
 
   def self.find_train

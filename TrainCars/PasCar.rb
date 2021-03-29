@@ -1,4 +1,4 @@
-load 'task5/company.rb'
+load '../task5/company.rb'
 
 class PassCar
 

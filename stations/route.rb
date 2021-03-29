@@ -7,7 +7,6 @@ class Route
   end
 
   def add_last
-    puts 'Введите название вашей последней станции'
     @last_station = gets.chomp
     puts "Ваша конечная станция - #{@last_station}"
   end
@@ -28,8 +27,6 @@ class Route
   # Ниже удаление или добавление станции в маршрут
   def full_route(num)
     puts @station_list.unshift(num)
-    puts 'Если это полный маршрут - пропишите "0", если вам нужно добавить станцию - пропишите "add",
-если убрать - "remove"'
     user_get = gets.chomp
     if user_get == '0'
       nil
