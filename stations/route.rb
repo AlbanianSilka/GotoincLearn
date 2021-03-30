@@ -8,13 +8,11 @@ class Route
 
   def add_last
     @last_station = gets.chomp
-    puts "Ваша конечная станция - #{@last_station}"
   end
 
   # Создание маршрута для поезда
   def create_stations
     @station_list = []
-    puts 'Вводите поочёдно ваши станции, а когда закончите, то напишите "stop" или "стоп"'
     while user_input = gets.chomp
       @station_list.push(user_input.to_s)
 
@@ -28,9 +26,7 @@ class Route
   def full_route(num)
     puts @station_list.unshift(num)
     user_get = gets.chomp
-    if user_get == '0'
-      nil
-    end
+    nil if user_get == '0'
     if user_get == 'add'
       puts 'Введите номер станции, перед которой вы бы хотели вставить новую станцию '
       choose_station = gets.chomp.to_i

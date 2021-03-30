@@ -40,7 +40,6 @@ class Train
 
   def start_train
     @speed = 100
-    puts "Скорость вашего поезда - #{speed}км/ч"
   end
 
   def turbo
@@ -56,16 +55,15 @@ class Train
   end
 
   def train_route(route)
-    puts "Маршрут вашего поезда - #{route}"
     current_station = 1
     puts "Сейчас вы на станции #{route[current_station - 1]}"
     puts 'До какой станции вы хотите доехать? Введите номером'
     our_station = gets.chomp.to_i
+    puts 'Поезд покидает первую станцию'
     while current_station != our_station
       current_station += 1
       puts "Поезд прибыл на станцию #{route[current_station - 1]}"
     end
-    puts 'Поезд покидает первую станцию'
   end
 
 

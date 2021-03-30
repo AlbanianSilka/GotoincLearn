@@ -23,8 +23,6 @@ class PassCar
 
   def accept_passengers(all_seats)
     @seats_number = all_seats
-    puts "В Вагоне №#{@car_number} есть #{@seats_number} свободных мест"
-    puts 'Вы хотите занять место в вагоне? Если да - введите 1, если нет - введите 0'
     user_input = gets.to_i
     if user_input == 1
       @seats_number -= 1

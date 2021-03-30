@@ -16,7 +16,6 @@ class Main
     2 => :add_carriage,
     3 => :create_train,
     4 => :detach_cars,
-    # 5 => :add_train_to_station,
     5 => :trains_on_station,
     6 => :train_route
   }.freeze
@@ -54,9 +53,13 @@ class Main
     @new_car = PassCar.new(12)
     @new_car.car_company('ООО Трансмаш')
     # Функция для добавления пассажиров в вагон, в скобках указывается общее количество мест
+    puts "В Вагоне №#{@new_car.car_number} есть 50 свободных мест"
+    puts 'Вы хотите занять место в вагоне? Если да - введите 1, если нет - введите 0'
     @new_car.accept_passengers(50)
     @new_car2 = PassCar.new(13)
     @new_car2.car_company('ООО Трансмаш')
+    puts "В Вагоне №#{@new_car2.car_number} есть 55 свободных мест"
+    puts 'Вы хотите занять место в вагоне? Если да - введите 1, если нет - введите 0'
     @new_car2.accept_passengers(55)
     # Создание двух грузовых вагонов с указанием компании производителя
     @new_car3 = CargoCar.new(19)
@@ -66,7 +69,6 @@ class Main
     @new_car4.car_company('ООО Азовмаш')
     @new_car4.fill_car(350)
   end
-
 
   def create_train
     # Создание пассажирского поезда, его производителя и его запуск
@@ -79,6 +81,7 @@ class Main
     @my_train.accept_car(@new_car2.contain_passengers, @new_car2.car_number)
     @my_train.show_cars
     @my_train.start_train
+    puts "Скорость вашего поезда - #{@my_train.speed}км/ч"
     @my_train.turbo
 
 
@@ -107,19 +110,25 @@ class Main
     my_route = Route.new
     puts 'Введите название вашей последней станции'
     my_route.add_last
+    puts "Ваша конечная станция - #{my_route.last_station}"
+    puts 'Вводите поочёдно ваши станции, а когда закончите, то напишите "stop" или "стоп"'
     my_route.create_stations
     puts 'Если это полный маршрут - пропишите "0", если вам нужно добавить станцию - пропишите "add",
 если убрать - "remove"'
     my_route.full_route(@my_station.station_name)
+    puts "Маршрут вашего поезда - #{my_route.station_list}"
     @my_train.train_route(my_route.station_list)
   end
 
   def detach_cars
     # Отцепляем вагоны от пассажирского и от грузового поезда
+    puts "Вот список вагонов на вашем поезде: #{@my_train.cars_list}. Какой вы хотите отцепить от своего поезда? Введите номером."
     @my_train.detach_cars
+    puts "Ваш новый список вагонов: #{@my_train.cars_list}"
+    puts "Вот список вагонов на вашем поезде: #{@my_train2.cars_list}. Какой вы хотите отцепить от своего поезда? Введите номером."
     @my_train2.detach_cars
+    puts "Ваш новый список вагонов: #{@my_train2.cars_list}"
   end
-
 
   def choose_action
     puts %(
@@ -139,7 +148,3 @@ class Main
 end
 
 Main.new.text_ui
-
-
-
-
