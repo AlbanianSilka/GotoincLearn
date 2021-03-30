@@ -1,4 +1,3 @@
-# load './TrainCars/CargoCar.rb'
 load '../TrainCars/CargoCar.rb'
 load '../TrainCars/PasCar.rb'
 load '../task5/company.rb'

@@ -13,7 +13,7 @@ class Route
   # Создание маршрута для поезда
   def create_stations
     @station_list = []
-    while user_input = gets.chomp
+    while (user_input = gets.chomp)
       @station_list.push(user_input.to_s)
 
       break if %w[стоп stop].include?(user_input)
