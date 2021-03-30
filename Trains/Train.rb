@@ -25,7 +25,6 @@ class Train
   end
 
   def self.find_train
-    puts 'Введите номер поезда, который вы хотите найти: '
     user_train = gets.to_i
     if @@train_list.include?(user_train)
       puts "Поезд под номером #{user_train} найден"
@@ -51,7 +50,9 @@ class Train
   end
 
   def show_cars
-    puts "Список вагонов в вашем поезде: #{cars_list}"
+    cars_list.each do |car|
+      puts "Вагон №#{car} прицеплен к поезду №#{@train_number}"
+    end
   end
 
   def train_route(route)

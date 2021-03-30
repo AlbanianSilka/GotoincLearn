@@ -1,6 +1,6 @@
 class Station
 
-  attr_accessor :station_name, :list_trains, :listed_trains
+  attr_accessor :station_name, :list_trains
 
   def self.show_stations(station_list)
     puts 'Это метод класса Station, он показывает вам все станции, которые существуют.'
@@ -13,15 +13,15 @@ class Station
 
   def initialize(list_trains = nil)
     @list_trains = list_trains
-    @listed_trains = list_trains
   end
 
   # Вывод всех поездов на главной станции
   def train_list(train_num)
     @list_trains = []
     @list_trains.append(train_num)
-    listed_trains = @list_trains[0]
-    puts "Номера поездов на станции #{@station_name}: #{listed_trains}"
+    @list_trains.each do |train|
+      puts "#{train} на станции #{@station_name}"
+    end
   end
 
-  end
+end

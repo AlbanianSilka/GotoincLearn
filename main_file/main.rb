@@ -53,13 +53,18 @@ class Main
     # Создание двух пассажирских вагонов с указанием компании производителя (указывается в скобках отдельной строкой)
     @new_car = PassCar.new(12)
     @new_car.car_company('ООО Трансмаш')
+    # Функция для добавления пассажиров в вагон, в скобках указывается общее количество мест
+    @new_car.accept_passengers(50)
     @new_car2 = PassCar.new(13)
     @new_car2.car_company('ООО Трансмаш')
+    @new_car2.accept_passengers(55)
     # Создание двух грузовых вагонов с указанием компании производителя
     @new_car3 = CargoCar.new(19)
     @new_car3.car_company('ООО Азовмаш')
+    @new_car3.fill_car(300)
     @new_car4 = CargoCar.new(30)
     @new_car4.car_company('ООО Азовмаш')
+    @new_car4.fill_car(350)
   end
 
 
@@ -87,6 +92,7 @@ class Main
     cargo_train = gets.to_i
     @my_train2.train_info(cargo_train)
     #показать все поезда
+    puts 'Введите номер поезда, который вы хотите найти: '
     Train.find_train
   end
 
@@ -101,11 +107,10 @@ class Main
     my_route = Route.new
     puts 'Введите название вашей последней станции'
     my_route.add_last
-    puts "Ваша конечная станция - #{@last_station}"
     my_route.create_stations
-    my_route.full_route(@my_station.station_name)
     puts 'Если это полный маршрут - пропишите "0", если вам нужно добавить станцию - пропишите "add",
 если убрать - "remove"'
+    my_route.full_route(@my_station.station_name)
     @my_train.train_route(my_route.station_list)
   end
 
@@ -134,6 +139,7 @@ class Main
 end
 
 Main.new.text_ui
+
 
 
 
