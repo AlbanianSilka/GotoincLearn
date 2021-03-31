@@ -13,13 +13,15 @@ class Car
     @car_type = nil
   end
 
-  def set_number
+
+  def set_number(hash)
     loop do
       @car_number = gets.to_i
       if @@num_list.include?(@car_number)
         puts 'Уже существует вагон с таким номером, попробуйте ещё раз!'
       else
         @@num_list.push(@car_number)
+        hash.store(@car_number, @car_type)
         break
       end
     end

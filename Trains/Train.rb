@@ -1,5 +1,6 @@
 load '../TrainCars/CargoCar.rb'
 load '../TrainCars/PasCar.rb'
+load '../TrainCars/Car.rb'
 load '../task5/company.rb'
 
 
@@ -16,6 +17,27 @@ class Train
     @speed = speed
     @cars_list = []
   end
+
+  def attach_car(hash)
+    loop do
+      user_input = gets.to_i
+      if hash.key?(user_input)
+        selected_car = hash.select{|number, type| number == user_input and type == @train_type}
+        if selected_car.empty?
+          puts 'Вы не можете присоединить к поезду такой вагон'
+        else
+          selected_car.each do |number, type|
+            @cars_list.append(number)
+          end
+          break
+        end
+      else
+        puts 'Такого вагона не существует'
+        break
+      end
+    end
+  end
+
 
   def train_info
     loop do

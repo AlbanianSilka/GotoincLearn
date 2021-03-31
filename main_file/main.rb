@@ -12,6 +12,8 @@ class Main
 
   attr_accessor :st_name
 
+  @@car_hash = {}
+
   ACTIONS = {
     1 => :create_station,
     2 => :add_carriage,
@@ -53,7 +55,7 @@ class Main
     # Создание двух пассажирских вагонов с указанием компании производителя (указывается в скобках отдельной строкой)
     @new_car = PassCar.new
     puts 'Введите номер вашего первого вагона.'
-    @new_car.set_number
+    @new_car.set_number(@@car_hash)
     @new_car.car_company('ООО Трансмаш')
     # Функция для добавления пассажиров в вагон, в скобках указывается общее количество мест
     puts "В Вагоне №#{@new_car.car_number} есть 50 свободных мест"
@@ -62,7 +64,7 @@ class Main
     @new_car.fill_car(230)
     @new_car2 = PassCar.new
     puts 'Введите номер вашего второго вагона.'
-    @new_car2.set_number
+    @new_car2.set_number(@@car_hash)
     @new_car2.car_company('ООО Трансмаш')
     puts "В Вагоне №#{@new_car2.car_number} есть 55 свободных мест"
     puts 'Вы хотите занять место в вагоне? Если да - введите 1, если нет - введите 0'
@@ -70,12 +72,12 @@ class Main
     # Создание двух грузовых вагонов с указанием компании производителя
     @new_car3 = CargoCar.new
     puts 'Введите номер вашего третьего вагона.'
-    @new_car3.set_number
+    @new_car3.set_number(@@car_hash)
     @new_car3.car_company('ООО Азовмаш')
     @new_car3.fill_car(300)
     @new_car4 = CargoCar.new(30)
     puts 'Введите номер вашего четвёртого вагона.'
-    @new_car4.set_number
+    @new_car4.set_number(@@car_hash)
     @new_car4.car_company('ООО Азовмаш')
     @new_car4.fill_car(350)
   end
@@ -87,8 +89,12 @@ class Main
     @my_train.train_info
     puts "Номера вашего поезда - #{@my_train.train_number}"
     @my_train.train_company('Хюндай')
-    @my_train.accept_car(@new_car.contain_passengers, @new_car.car_number)
-    @my_train.accept_car(@new_car2.contain_passengers, @new_car2.car_number)
+    puts "Список всех ваших вагонов - #{@@car_hash}"
+    puts 'Введите номер первого вагона, который вы захотите присоединить к первому поезду'
+    @my_train.attach_car(@@car_hash)
+
+    puts 'Введите номер второго вагона, который вы захотите присоединить к первому поезду'
+    @my_train.attach_car(@@car_hash)
     @my_train.show_cars
     @my_train.start_train
     puts "Скорость вашего поезда - #{@my_train.speed}км/ч"
@@ -98,8 +104,10 @@ class Main
     # Создание грузового поезда и его производителя
     @my_train2 = CargoTrain.new
     @my_train2.train_company('French National Railway Company')
-    @my_train2.accept_car(@new_car3.goods, @new_car3.car_number)
-    @my_train2.accept_car(@new_car4.goods, @new_car4.car_number)
+    puts 'Введите номер первого вагона, который вы захотите присоединить ко второму поезду'
+    @my_train2.attach_car(@@car_hash)
+    puts 'Введите номер второго вагона, который вы захотите присоединить ко второму поезду'
+    @my_train2.attach_car(@@car_hash)
     @my_train2.show_cars
     puts 'Введите номер вашего второго поезда.'
     @my_train2.train_info
