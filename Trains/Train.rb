@@ -29,8 +29,6 @@ class Train
     end
   end
 
-
-
   def self.find_train
     user_train = gets.to_i
     if @@train_list.include?(user_train)

@@ -5,6 +5,7 @@ load '../Trains/Train.rb'
 load '../Trains/PasTrain.rb'
 load '../Trains/CargoTrain.rb'
 load '../task6/validation.rb'
+load '../TrainCars/Car.rb'
 
 
 class Main
@@ -50,22 +51,31 @@ class Main
 
   def add_carriage
     # Создание двух пассажирских вагонов с указанием компании производителя (указывается в скобках отдельной строкой)
-    @new_car = PassCar.new(12)
+    @new_car = PassCar.new
+    puts 'Введите номер вашего первого вагона.'
+    @new_car.set_number
     @new_car.car_company('ООО Трансмаш')
     # Функция для добавления пассажиров в вагон, в скобках указывается общее количество мест
     puts "В Вагоне №#{@new_car.car_number} есть 50 свободных мест"
     puts 'Вы хотите занять место в вагоне? Если да - введите 1, если нет - введите 0'
     @new_car.accept_passengers(50)
-    @new_car2 = PassCar.new(13)
+    @new_car.fill_car(230)
+    @new_car2 = PassCar.new
+    puts 'Введите номер вашего второго вагона.'
+    @new_car2.set_number
     @new_car2.car_company('ООО Трансмаш')
     puts "В Вагоне №#{@new_car2.car_number} есть 55 свободных мест"
     puts 'Вы хотите занять место в вагоне? Если да - введите 1, если нет - введите 0'
     @new_car2.accept_passengers(55)
     # Создание двух грузовых вагонов с указанием компании производителя
-    @new_car3 = CargoCar.new(19)
+    @new_car3 = CargoCar.new
+    puts 'Введите номер вашего третьего вагона.'
+    @new_car3.set_number
     @new_car3.car_company('ООО Азовмаш')
     @new_car3.fill_car(300)
     @new_car4 = CargoCar.new(30)
+    puts 'Введите номер вашего четвёртого вагона.'
+    @new_car4.set_number
     @new_car4.car_company('ООО Азовмаш')
     @new_car4.fill_car(350)
   end

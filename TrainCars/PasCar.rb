@@ -1,20 +1,19 @@
 # frozen_string_literal: true
 load '../task5/company.rb'
+load '../TrainCars/Car.rb'
 
-class PassCar
+class PassCar < Car
 
   include Company
 
   attr_reader :seats_number, :occupied_seats
 
-  attr_accessor :contain_passengers, :goods, :car_number
+  attr_accessor :contain_passengers
 
-  def initialize(car_number, *args)
-    @car_number = car_number
-    @contain_passengers = args[0] || true
-    @goods = args[1] || false
-    @seats_number = args[2] || 0
-    @occupied_seats = 0
+
+  def initialize(*args)
+    super
+    @car_type = 'Passenger'
   end
 
   def show_number
@@ -33,7 +32,4 @@ class PassCar
     nil if user_input.zero?
   end
 
-  def check_goods
-    puts 'В пассажирский вагон запрещено завозить груз, для этого есть грузовые вагоны'
-  end
 end
