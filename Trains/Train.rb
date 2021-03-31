@@ -17,11 +17,19 @@ class Train
     @cars_list = []
   end
 
-  def train_info(train_num)
-    @train_number = train_num
-    puts "Номера вашего поезда - #{train_num}"
-    @@train_list.push(train_num)
+  def train_info
+    loop do
+      @train_number = gets.to_i
+      if @@train_list.include?(@train_number)
+        puts 'Уже существует поезд с таким номером, попробуйте ещё раз!'
+      else
+        @@train_list.push(@train_number)
+        break
+      end
+    end
   end
+
+
 
   def self.find_train
     user_train = gets.to_i

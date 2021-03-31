@@ -74,8 +74,8 @@ class Main
     # Создание пассажирского поезда, его производителя и его запуск
     @my_train = PassTrain.new
     puts 'Введите номер вашего первого поезда.'
-    pass_train = gets.to_i
-    @my_train.train_info(pass_train)
+    @my_train.train_info
+    puts "Номера вашего поезда - #{@my_train.train_number}"
     @my_train.train_company('Хюндай')
     @my_train.accept_car(@new_car.contain_passengers, @new_car.car_number)
     @my_train.accept_car(@new_car2.contain_passengers, @new_car2.car_number)
@@ -92,8 +92,8 @@ class Main
     @my_train2.accept_car(@new_car4.goods, @new_car4.car_number)
     @my_train2.show_cars
     puts 'Введите номер вашего второго поезда.'
-    cargo_train = gets.to_i
-    @my_train2.train_info(cargo_train)
+    @my_train2.train_info
+    puts "Номера вашего поезда - #{@my_train2.train_number}"
     #показать все поезда
     puts 'Введите номер поезда, который вы хотите найти: '
     Train.find_train
