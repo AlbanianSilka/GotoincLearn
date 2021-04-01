@@ -1,13 +1,35 @@
-# прямоугольный треугольник
-puts 'Введите длину первого катета'
-a = gets.to_i
-puts 'Введите длину второго катета'
-b = gets.to_i
-puts 'Введите длину гипотенузы'
-c = gets.to_i
-if a**2 + b**2 == c**2
-  puts 'Треугольник прямоугольный'
-else
-  puts 'Треугольник не прямоугольный'
+def valid?(sides)
+  hypotenuse = sides.index(sides.max)
+  sum = 0
+  sides.each_with_index do |x, index|
+    sum += x unless index == hypotenuse
+  end
+  sum > sides[hypotenuse]
 end
-puts 'Треугольник равнобедренный' if (a == b) || (b == c) || (a == c)
+
+def rectangular?(sides)
+  hypotenuse = sides.index(sides.max)
+  sum = 0
+  sides.each_with_index do |x, index|
+    sum += x**2 unless index == hypotenuse
+  end
+  sides[hypotenuse]**2 == sum
+end
+
+def isosceles?(sides)
+  sides.uniq.size == 2
+end
+
+sides = []
+print 'Введите размер первой стороны: '
+sides.push(gets.chomp.to_f)
+print 'Введите размер второй стороны: '
+sides.push(gets.chomp.to_f)
+print 'Введите размер третьей: '
+sides.push(gets.chomp.to_f)
+if valid?(sides)
+  print "Этот треугольник #{rectangular?(sides) ? '' : 'не '}прямоугольный"
+  print ', а также он равнобедренный.' if isosceles?(sides)
+else
+  print 'Что-то вы ввели неправильно...'
+end
