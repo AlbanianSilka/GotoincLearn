@@ -11,12 +11,14 @@ require_relative 'modules/CarCommands'
 require_relative 'Trains/train'
 require_relative 'Trains/PassTrain'
 require_relative 'Trains/CargoTrain'
+require_relative 'modules/Company'
 
 # Class, that contain text UI and functions from another files
 class Main
   include(CarriageActions)
   include(StationActions)
   include(TrainActions)
+  include(Company)
 
   ACTIONS = {
     1 => :create_station,
@@ -25,7 +27,8 @@ class Main
     4 => :remove_carriage,
     5 => :add_train_to_station,
     6 => :trains_on_station,
-    7 => :control_train
+    7 => :control_train,
+    8 => :stations_list
   }.freeze
   attr_reader :stations, :trains
 
@@ -76,6 +79,7 @@ class Main
 5 - Отправить поезд на станцию
 6 - Просматривать список станций и список поездов на станции
 7 - Управление поездом
+8 - Показать все станции
 ВВЕДИТЕ НОМЕР:)
     gets.chomp.to_i
   end

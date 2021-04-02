@@ -32,5 +32,10 @@ module StationActions
     self.route = Route.new(*stations) if stations.size > 1
     puts "Станция #{station_name} была успешно создана!"
   end
+
+  def stations_list
+    x = stations.map(&:name).join(' ')
+    puts "Список всех станций: #{x}"
+  end
 end
 

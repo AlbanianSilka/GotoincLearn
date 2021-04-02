@@ -1,7 +1,8 @@
 # frozen_string_literal: true
-
+load './modules/Company.rb'
 # Train class
 class Train
+  include Company
   class << self
     attr_accessor :trains
 
@@ -17,10 +18,11 @@ class Train
 
   @trains = []
 
-  def initialize(number)
+  def initialize(number, company_name)
     @number = number
     @speed = 0
     @carriages = []
+    self.company_name = company_name
     if self.class.trains.nil?
       Train.trains.push(self)
     else

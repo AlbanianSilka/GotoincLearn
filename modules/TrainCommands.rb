@@ -42,24 +42,26 @@ module TrainActions
   def create_train(train_type)
     puts 'Введите номер поезда'
     train_number = gets.chomp
+    puts 'Введите его компанию-производителя'
+    train_company = gets.chomp
     case train_type
     when 1
-      create_passenger_train(train_number)
+      create_passenger_train(train_number, train_company)
     when 2
-      create_cargo_train(train_number)
+      create_cargo_train(train_number, train_company)
     else
       'Неправильный выбран поезд'
     end
   end
 
-  def create_passenger_train(train_number)
-    trains << PassengerTrain.new(train_number)
-    puts "Вы успешно создали пассажирский поезд под номером #{train_number}!"
+  def create_passenger_train(train_number, train_company)
+    trains << PassengerTrain.new(train_number, train_company)
+    puts "Вы успешно создали пассажирский поезд под номером #{train_number}! И создан компанией #{train_company}"
   end
 
-  def create_cargo_train(train_number)
-    trains << CargoTrain.new(train_number)
-    puts "Товарный поезд был успешно создан под номером #{train_number}!"
+  def create_cargo_train(train_number, train_company)
+    trains << CargoTrain.new(train_number, train_company)
+    puts "Товарный поезд был успешно создан под номером #{train_number}! И создан компанией #{train_company}"
   end
 
   def control_train
