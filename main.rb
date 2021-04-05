@@ -12,6 +12,7 @@ require_relative 'Trains/train'
 require_relative 'Trains/PassTrain'
 require_relative 'Trains/CargoTrain'
 require_relative 'modules/Company'
+require_relative 'modules/InstanceCounter'
 
 # Class, that contain text UI and functions from another files
 class Main
@@ -19,6 +20,7 @@ class Main
   include(StationActions)
   include(TrainActions)
   include(Company)
+  include(InstanceCounter)
 
   ACTIONS = {
     1 => :create_station,
@@ -28,7 +30,8 @@ class Main
     5 => :add_train_to_station,
     6 => :trains_on_station,
     7 => :control_train,
-    8 => :stations_list
+    8 => :stations_list,
+    9 => :check_counter
   }.freeze
   attr_reader :stations, :trains
 
@@ -69,6 +72,10 @@ class Main
     end
   end
 
+  def check_counter
+    puts "Количество элементов класса Station равно #{InstanceCounter.count_instances}"
+  end
+
   def choose_action
     puts %(Список действий
 0 - Выход
@@ -80,9 +87,11 @@ class Main
 6 - Просматривать список станций и список поездов на станции
 7 - Управление поездом
 8 - Показать все станции
+9 - Задание №5 - число всех элементов класса Station
 ВВЕДИТЕ НОМЕР:)
     gets.chomp.to_i
   end
 end
 
 Main.new.text_ui
+

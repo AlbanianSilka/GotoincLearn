@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # Module to count class instances
-protected_methods(InstanceCounter)
 module InstanceCounter
 
   def self.count_instances

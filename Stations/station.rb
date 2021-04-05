@@ -1,5 +1,8 @@
 # Station class
+load './modules/InstanceCounter.rb'
 class Station
+
+  include InstanceCounter
 
   attr_reader :name
 
@@ -57,3 +60,5 @@ class Station
     @name
   end
 end
+
+
