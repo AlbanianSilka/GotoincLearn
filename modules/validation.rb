@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-# Module to validate different elements in class
+# Validation module
 module Validation
   def self.included(base)
     base.extend ClassMethods
     base.send :include, InstanceMethods
   end
 
-  # Contains logic for creating validation
+  # Module for class validation
   module ClassMethods
     def validate(attribute_name, validation_type, option: true)
       if validation_hash[attribute_name]
@@ -26,11 +26,11 @@ module Validation
     def validation_errors(type, attribute_name)
       case type
       when :presence
-        "#{attribute_name} shouldn't be nil or ''"
+        "#{attribute_name} не может быть пустым ''"
       when :format
-        "#{attribute_name} has invalid format"
+        "#{attribute_name} - неверный формат"
       when :type
-        "#{attribute_name} has invalid type"
+        "#{attribute_name} - неправильный вид"
       else
         'Unknown error'
       end
