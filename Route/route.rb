@@ -2,6 +2,7 @@
 
 # Route class
 class Route
+  include Validation
 
   def stations
     @stations ||= []
@@ -13,6 +14,7 @@ class Route
       @stations << x
     end
     create_bonds
+    valid?
   end
 
   def create_bonds

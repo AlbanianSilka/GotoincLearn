@@ -94,4 +94,3 @@ class Main
 end
 
 Main.new.text_ui
-

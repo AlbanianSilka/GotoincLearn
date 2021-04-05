@@ -1,8 +1,11 @@
 # frozen_string_literal: true
+
 load './modules/Company.rb'
+load './modules/validation.rb'
 # Train class
 class Train
   include Company
+  include Validation
   class << self
     attr_accessor :trains
 
@@ -28,6 +31,7 @@ class Train
     else
       self.class.trains.push(self)
     end
+    valid?
   end
 
   def type
